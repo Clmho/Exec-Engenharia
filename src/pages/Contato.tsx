@@ -169,10 +169,9 @@ export const Contato = () => {
                         <label className="text-sm font-bold text-gray-700">Nome Completo</label>
                         <input
                           type="text"
-                          value={formData.nome}
                           onChange={(e) => setFormData({ ...formData, nome: e.target.value })}
                           className={`w-full px-4 py-3 rounded-xl border outline-none transition-all ${errors.nome ? 'border-red-500 focus:ring-red-100' : 'border-gray-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-50 focus:ring-opacity-50'}`}
-                          placeholder="Ex: João Silva"
+                          placeholder=""
                         />
                         {errors.nome && <p className="text-red-500 text-xs font-medium flex items-center gap-1"><AlertCircle size={12} /> {errors.nome}</p>}
                       </div>
@@ -180,10 +179,9 @@ export const Contato = () => {
                         <label className="text-sm font-bold text-gray-700">E-mail</label>
                         <input
                           type="email"
-                          value={formData.email}
                           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                           className={`w-full px-4 py-3 rounded-xl border outline-none transition-all ${errors.email ? 'border-red-500 focus:ring-red-100' : 'border-gray-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-50 focus:ring-opacity-50'}`}
-                          placeholder="joao@exemplo.com"
+                          placeholder=""
                         />
                         {errors.email && <p className="text-red-500 text-xs font-medium flex items-center gap-1"><AlertCircle size={12} /> {errors.email}</p>}
                       </div>
@@ -193,10 +191,9 @@ export const Contato = () => {
                       <label className="text-sm font-bold text-gray-700">Telefone / WhatsApp</label>
                       <input
                         type="text"
-                        value={formData.telefone}
                         onChange={(e) => setFormData({ ...formData, telefone: e.target.value })}
                         className={`w-full px-4 py-3 rounded-xl border outline-none transition-all ${errors.telefone ? 'border-red-500 focus:ring-red-100' : 'border-gray-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-50 focus:ring-opacity-50'}`}
-                        placeholder="(11) 99999-9999"
+                        placeholder=""
                       />
                       {errors.telefone && <p className="text-red-500 text-xs font-medium flex items-center gap-1"><AlertCircle size={12} /> {errors.telefone}</p>}
                     </div>
@@ -205,10 +202,9 @@ export const Contato = () => {
                       <label className="text-sm font-bold text-gray-700">Mensagem</label>
                       <textarea
                         rows={5}
-                        value={formData.mensagem}
                         onChange={(e) => setFormData({ ...formData, mensagem: e.target.value })}
                         className={`w-full px-4 py-3 rounded-xl border outline-none transition-all resize-none ${errors.mensagem ? 'border-red-500 focus:ring-red-100' : 'border-gray-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-50 focus:ring-opacity-50'}`}
-                        placeholder="Como podemos ajudar?"
+                        placeholder=""
                       />
                       {errors.mensagem && <p className="text-red-500 text-xs font-medium flex items-center gap-1"><AlertCircle size={12} /> {errors.mensagem}</p>}
                     </div>

@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { PageLayout } from '../components/PageLayout';
-import { CLIENTES } from '../data/mock';
+import { Cliente } from '../data/mock';
+import { api } from '../services/api';
 import { motion } from 'motion/react';
 
 export const Clientes = () => {
+  const [clientes, setClientes] = useState<Cliente[]>([]);
+
+  useEffect(() => {
+    api.getClientes().then(setClientes).catch(console.error);
+  }, []);
+
   return (
     <PageLayout 
       title="Nossos Clientes"
@@ -21,7 +28,7 @@ export const Clientes = () => {
       <section className="py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {['Empresas', 'Parceiros', 'Administradoras e Condomínios'].map((categoria) => {
-            const clientesDaCategoria = CLIENTES.filter(c => c.categoria === categoria);
+            const clientesDaCategoria = clientes.filter(c => c.categoria === categoria);
             if (clientesDaCategoria.length === 0) return null;
 
             return (

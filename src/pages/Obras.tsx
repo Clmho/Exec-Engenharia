@@ -1,17 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { PageLayout } from '../components/PageLayout';
 import { ObraCard } from '../components/ObraCard';
-import { OBRAS } from '../data/mock';
+import { Obra } from '../data/mock';
+import { api } from '../services/api';
 import { motion } from 'motion/react';
 import { Search, Filter } from 'lucide-react';
 
 export const Obras = () => {
+  const [obras, setObras] = useState<Obra[]>([]);
   const [filter, setFilter] = useState('Todas');
   const categories = ['Todas', 'Residencial', 'Comercial', 'Industrial'];
 
+  useEffect(() => {
+    api.getObras().then(setObras).catch(console.error);
+  }, []);
+
   const filteredObras = filter === 'Todas' 
-    ? OBRAS 
-    : OBRAS.filter(o => o.categoria === filter);
+    ? obras 
+    : obras.filter(o => o.categoria === filter);
 
   return (
     <PageLayout 

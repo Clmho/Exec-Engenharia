@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { PageLayout } from '../components/PageLayout';
 import { NoticiaCard } from '../components/NoticiaCard';
-import { NOTICIAS } from '../data/mock';
+import { Noticia } from '../data/mock';
+import { api } from '../services/api';
 
 export const Noticias = () => {
+  const [noticias, setNoticias] = useState<Noticia[]>([]);
+
+  useEffect(() => {
+    api.getNoticias().then(setNoticias).catch(console.error);
+  }, []);
+
   return (
     <PageLayout 
       title="Notícias"
@@ -28,7 +35,7 @@ export const Noticias = () => {
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 gap-12">
-            {NOTICIAS.map((noticia) => (
+            {noticias.map((noticia) => (
               <NoticiaCard key={noticia.id} noticia={noticia} />
             ))}
           </div>

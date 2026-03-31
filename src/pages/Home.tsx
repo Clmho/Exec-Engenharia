@@ -1,12 +1,24 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, CheckCircle2, Trophy, Users, Building } from 'lucide-react';
 import { PageLayout } from '../components/PageLayout';
 import { ObraCard } from '../components/ObraCard';
-import { OBRAS, CLIENTES } from '../data/mock';
+import { NoticiaCard } from '../components/NoticiaCard';
+import { Obra, Cliente, Noticia } from '../data/mock';
+import { api } from '../services/api';
 import { motion } from 'motion/react';
 
 export const Home = () => {
+  const [obras, setObras] = useState<Obra[]>([]);
+  const [clientes, setClientes] = useState<Cliente[]>([]);
+  const [noticias, setNoticias] = useState<Noticia[]>([]);
+
+  useEffect(() => {
+    api.getObras().then(setObras).catch(console.error);
+    api.getClientes().then(setClientes).catch(console.error);
+    api.getNoticias().then(setNoticias).catch(console.error);
+  }, []);
+
   return (
     <PageLayout 
       title="Excelência em Engenharia e Construções"
@@ -100,26 +112,30 @@ export const Home = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {OBRAS.slice(0, 3).map((obra) => (
+            {obras.slice(0, 3).map((obra) => (
               <ObraCard key={obra.id} obra={obra} />
             ))}
           </div>
         </div>
       </section>
 
-      {/* Clients Section */}
-      <section className="py-20 bg-gray-50 overflow-hidden">
+      {/* Latest News Section */}
+      <section className="py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h3 className="text-center text-gray-400 font-bold text-xs uppercase tracking-[0.3em] mb-12">Empresas que confiam em nós</h3>
-          <div className="flex flex-wrap justify-center items-center gap-12 md:gap-20 opacity-50 grayscale hover:grayscale-0 transition-all">
-            {CLIENTES.map((cliente) => (
-              <img 
-                key={cliente.id} 
-                src={cliente.logo_url} 
-                alt={cliente.nome} 
-                className="h-8 md:h-10 object-contain"
-                referrerPolicy="no-referrer"
-              />
+          <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+            <div className="max-w-2xl">
+              <span className="text-blue-600 font-bold text-xs uppercase tracking-[0.2em] mb-4 block">Fique por dentro</span>
+              <h2 className="text-4xl font-bold text-gray-900 tracking-tight">Últimas Notícias</h2>
+              <p className="text-gray-500 mt-4 text-lg">Acompanhe as novidades da Exec Engenharia e as tendências do setor da construção civil.</p>
+            </div>
+            <Link to="/noticias" className="text-blue-600 font-bold flex items-center gap-2 hover:underline">
+              Ver todas as notícias <ArrowRight size={18} />
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 gap-8">
+            {noticias.slice(0, 2).map((noticia) => (
+              <NoticiaCard key={noticia.id} noticia={noticia} />
             ))}
           </div>
         </div>

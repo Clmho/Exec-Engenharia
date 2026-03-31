@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nossos Clientes | Exec Engenharia</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        [x-cloak] { display: none !important; }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        blue: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            200: '#bfdbfe',
+                            300: '#93c5fd',
+                            400: '#60a5fa',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            800: '#1e40af',
+                            900: '#1e3a8a',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-white text-gray-900" x-data="{ 
+    isOpen: false, 
+    isScrolled: true,
+    clientes: [
+        { id: '1', nome: 'TechCorp Solutions', categoria: 'Empresas' },
+        { id: '2', nome: 'Global Logistics', categoria: 'Empresas' },
+        { id: '3', nome: 'Urban Living', categoria: 'Empresas' },
+        { id: '4', nome: 'Green Energy SA', categoria: 'Empresas' },
+        { id: '5', nome: 'Inova Real Estate', categoria: 'Empresas' },
+        { id: '6', nome: 'Prime Bank', categoria: 'Empresas' },
+        { id: '7', nome: 'Construtora Alpha', categoria: 'Parceiros' },
+        { id: '8', nome: 'Engenharia Beta', categoria: 'Parceiros' },
+        { id: '9', nome: 'Arquitetura Gamma', categoria: 'Parceiros' },
+        { id: '10', nome: 'Adm. Predial Central', categoria: 'Administradoras e Condomínios' },
+        { id: '11', nome: 'Condomínio Solar', categoria: 'Administradoras e Condomínios' },
+        { id: '12', nome: 'Gestão Patrimonial', categoria: 'Administradoras e Condomínios' }
+    ],
+    categories: ['Empresas', 'Parceiros', 'Administradoras e Condomínios'],
+    navLinks: [
+        { name: 'Home', path: 'index.html' },
+        { name: 'Empresa', path: 'empresa.html' },
+        { name: 'Obras', path: 'obras.html' },
+        { name: 'Clientes', path: 'clientes.html' },
+        { name: 'Notícias', path: 'noticias.html' },
+        { name: 'Contato', path: 'contato.html' }
+    ]
+}" x-init="lucide.createIcons();">
+
+    <!-- Navbar -->
+    <nav
+        class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b bg-white py-2 border-gray-200 shadow-sm"
+    >
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center">
+                <a href="index.html" class="flex items-center group">
+                    <img 
+                        src="https://execengenharia.com.br/logo-exec-engenharia.png" 
+                        alt="Exec Engenharia" 
+                        class="h-12 w-auto transition-all"
+                        referrerPolicy="no-referrer"
+                    />
+                </a>
+
+                <!-- Desktop Nav -->
+                <div class="hidden md:flex items-center gap-8">
+                    <template x-for="link in navLinks" :key="link.path">
+                        <a 
+                            :href="link.path" 
+                            :class="link.path === 'clientes.html' ? 'text-blue-600' : 'text-gray-800 hover:text-blue-600'"
+                            class="text-sm font-bold transition-colors uppercase tracking-wide"
+                            x-text="link.name"
+                        ></a>
+                    </template>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button
+                    class="md:hidden p-2 transition-colors text-gray-800"
+                    @click="isOpen = !isOpen"
+                >
+                    <i x-show="!isOpen" data-lucide="menu"></i>
+                    <i x-show="isOpen" data-lucide="x"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Nav -->
+        <div
+            x-show="isOpen"
+            x-cloak
+            class="md:hidden absolute top-full left-0 right-0 bg-white border-b border-gray-200 overflow-hidden py-4 shadow-xl"
+        >
+            <div class="flex flex-col gap-4 px-4">
+                <template x-for="link in navLinks" :key="link.path">
+                    <a 
+                        :href="link.path" 
+                        :class="link.path === 'clientes.html' ? 'text-blue-600' : 'text-gray-600'"
+                        class="text-base font-medium py-2 border-b border-gray-50"
+                        x-text="link.name"
+                    ></a>
+                </template>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-20">
+        <!-- Header -->
+        <section class="py-20 bg-gray-50 border-b border-gray-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h1 class="text-4xl font-bold text-gray-900 mb-6 tracking-tight">Parceiros de Sucesso</h1>
+                <p class="text-gray-500 max-w-2xl mx-auto text-lg">
+                    Ao longo de nossa trajetória, construímos relacionamentos sólidos com grandes empresas de diversos setores.
+                </p>
+            </div>
+        </section>
+
+        <!-- Clientes Grid -->
+        <section class="py-24">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <template x-for="category in categories" :key="category">
+                    <div class="mb-24 last:mb-0">
+                        <div class="flex items-center gap-4 mb-12">
+                            <h2 class="text-2xl font-bold text-gray-900 uppercase tracking-wider" x-text="category"></h2>
+                            <div class="h-px flex-grow bg-gray-200"></div>
+                        </div>
+                        
+                        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                            <template x-for="cliente in clientes.filter(c => c.categoria === category)" :key="cliente.id">
+                                <div class="bg-white p-6 rounded-xl border border-gray-100 flex items-center justify-center hover:shadow-md hover:border-blue-100 transition-all group">
+                                    <span class="text-sm font-bold text-gray-600 group-hover:text-blue-600 transition-colors text-center uppercase tracking-wider" x-text="cliente.nome"></span>
+                                </div>
+                            </template>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="py-24 bg-gray-900 text-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-3xl font-bold mb-8">Seja nosso próximo parceiro</h2>
+                <p class="text-gray-400 max-w-xl mx-auto mb-12">
+                    Estamos prontos para atender as demandas mais exigentes da sua empresa com soluções inteligentes de engenharia.
+                </p>
+                <a 
+                    href="contato.html" 
+                    class="inline-block bg-blue-600 text-white px-10 py-4 rounded-full font-bold hover:bg-blue-700 transition-all"
+                >
+                    Entrar em Contato
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div class="space-y-4">
+                    <img src="https://execengenharia.com.br/logo-exec-engenharia.png" alt="Exec Engenharia" class="h-12 w-auto brightness-0 invert" referrerPolicy="no-referrer" />
+                    <p class="text-gray-400 text-sm leading-relaxed">Excelência em engenharia e construções desde 1993.</p>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-lg mb-6">Navegação</h3>
+                    <ul class="space-y-3 text-gray-400 text-sm">
+                        <li><a href="index.html" class="hover:text-blue-400 transition-colors">Home</a></li>
+                        <li><a href="empresa.html" class="hover:text-blue-400 transition-colors">Empresa</a></li>
+                        <li><a href="obras.html" class="hover:text-blue-400 transition-colors">Obras</a></li>
+                        <li><a href="contato.html" class="hover:text-blue-400 transition-colors">Contato</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-lg mb-6">Serviços</h3>
+                    <ul class="space-y-3 text-gray-400 text-sm">
+                        <li>Construção Civil</li>
+                        <li>Reformas Corporativas</li>
+                        <li>Gestão de Projetos</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-lg mb-6">Contato</h3>
+                    <ul class="space-y-4 text-gray-400 text-sm">
+                        <li class="flex items-center gap-3"><i data-lucide="phone" size="18" class="text-blue-400"></i> (51) 99988-1367</li>
+                        <li class="flex items-center gap-3"><i data-lucide="mail" size="18" class="text-blue-400"></i> exec@execengenharia.com.br</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 text-center text-gray-500 text-xs">
+                <p>© 2026 Exec Engenharia e Construções Ltda. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

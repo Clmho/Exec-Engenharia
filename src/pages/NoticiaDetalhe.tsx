@@ -1,14 +1,37 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { PageLayout } from '../components/PageLayout';
-import { NOTICIAS } from '../data/mock';
+import { Noticia } from '../data/mock';
+import { api } from '../services/api';
 import { motion } from 'motion/react';
 import { ArrowLeft, Calendar } from 'lucide-react';
 
 export const NoticiaDetalhe = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const noticia = NOTICIAS.find(n => n.id === id);
+  const [noticia, setNoticia] = useState<Noticia | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    api.getNoticias().then(noticias => {
+      const found = noticias.find(n => n.id === id);
+      setNoticia(found || null);
+      setLoading(false);
+    }).catch(err => {
+      console.error(err);
+      setLoading(false);
+    });
+  }, [id]);
+
+  if (loading) {
+    return (
+      <PageLayout title="Carregando...">
+        <div className="py-32 text-center">
+          <h1 className="text-3xl font-bold mb-6">Carregando...</h1>
+        </div>
+      </PageLayout>
+    );
+  }
 
   if (!noticia) {
     return (
