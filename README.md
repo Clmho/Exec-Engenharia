@@ -1,36 +1,17 @@
-# Projeto Skabe - Full-Stack (React + Node.js)
+# Projeto Skabe - Versão HTML Autônoma
 
-Este projeto foi migrado para uma arquitetura moderna **Full-Stack**. Isso significa que ele **não funciona** apenas abrindo o arquivo `index.html` no navegador. Ele precisa de um ambiente **Node.js** para rodar o servidor e processar o código React.
+Este projeto foi convertido para funcionar de forma **totalmente autônoma** diretamente no seu navegador, sem a necessidade de instalar o Node.js, rodar servidores ou processos de build. Todo o CSS, JavaScript e imagens necessárias foram embutidos em um único arquivo HTML.
 
-## 🚀 Como Rodar o Projeto Localmente
+## 🚀 Como Visualizar o Site
 
-Siga estes passos após baixar e extrair o arquivo ZIP:
-
-### 1. Pré-requisitos
-Certifique-se de ter o **Node.js** instalado em seu computador (versão 18 ou superior). Você pode baixá-lo em [nodejs.org](https://nodejs.org/).
-
-### 2. Instalar Dependências
-Abra o terminal (ou prompt de comando) na pasta onde você extraiu o projeto e digite:
-```bash
-npm install
-```
-
-### 3. Configurar Banco de Dados (Opcional)
-O projeto já vem configurado para conectar ao banco de dados da Skabe. Se você quiser usar um banco local:
-1. Copie o arquivo `.env.example` e renomeie para `.env`.
-2. Edite as informações de conexão no arquivo `.env`.
-
-### 4. Iniciar o Servidor de Desenvolvimento
-Para rodar o site no seu computador, digite:
-```bash
-npm run dev
-```
-O terminal mostrará um endereço (geralmente `http://localhost:3000`). Abra esse endereço no seu navegador.
-
----
+1. Após baixar e extrair o arquivo ZIP, procure pelo arquivo chamado **`site-pronto.html`** na pasta principal.
+2. Dê um **duplo clique** neste arquivo para abri-lo no seu navegador (Chrome, Firefox, Safari, Edge, etc.).
+3. O site funcionará perfeitamente, incluindo todas as páginas, navegação e animações.
 
 ## ⚠️ Notas Importantes
 
-*   **Não abra o `index.html` diretamente**: O navegador não conseguirá processar o código React sem o servidor rodando.
-*   **Hospedagem**: Se você for colocar o site em um servidor de hospedagem comum (como cPanel que só aceita PHP), ele não funcionará da mesma forma. Este site agora precisa de um ambiente que suporte **Node.js**.
-*   **Banco de Dados**: A conexão com o banco de dados depende de internet. Se o seu computador estiver bloqueando a conexão com o servidor da Skabe, os dados (obras, notícias) podem não aparecer.
+*   **Navegação**: A navegação entre as páginas (Home, Empresa, Obras, etc.) funciona perfeitamente dentro deste único arquivo HTML. Você notará que a URL no navegador terá um `#` (ex: `site-pronto.html#/obras`). Isso é normal e esperado para que o site funcione sem um servidor.
+*   **Hospedagem**: Se você for colocar o site na internet (como em um cPanel ou qualquer hospedagem simples), basta fazer o upload do arquivo **`site-pronto.html`** (você pode renomeá-lo para `index.html` no seu servidor) e ele funcionará sem precisar de nenhuma configuração especial.
+*   **Dados**: Os dados das obras, notícias e clientes foram embutidos diretamente no código, removendo a dependência de um banco de dados externo para que o site funcione offline.
+*   **Edição**: Como todo o código (React, Tailwind, Framer Motion) foi compilado e embutido neste único arquivo para garantir que o layout fique *exatamente* como no preview, o código fonte do `site-pronto.html` é minificado (compactado). Se você precisar fazer alterações no conteúdo ou layout no futuro, deverá editar os arquivos na pasta `src/` e gerar um novo build.
+

@@ -2,12 +2,12 @@ import { Obra, Noticia, Cliente, OBRAS, NOTICIAS, CLIENTES } from '../data/mock'
 
 export const api = {
   getObras: async (): Promise<Obra[]> => {
-    return Promise.resolve(OBRAS);
+    return OBRAS;
   },
   getNoticias: async (): Promise<Noticia[]> => {
-    return Promise.resolve(NOTICIAS);
+    return NOTICIAS;
   },
   getClientes: async (): Promise<Cliente[]> => {
-    return Promise.resolve(CLIENTES);
+    return CLIENTES;
   }
 };

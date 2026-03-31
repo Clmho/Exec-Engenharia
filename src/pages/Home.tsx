@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, CheckCircle2, Trophy, Users, Building } from 'lucide-react';
 import { PageLayout } from '../components/PageLayout';
 import { ObraCard } from '../components/ObraCard';
-import { NoticiaCard } from '../components/NoticiaCard';
 import { Obra, Cliente, Noticia } from '../data/mock';
 import { api } from '../services/api';
 import { motion } from 'motion/react';
@@ -126,16 +125,30 @@ export const Home = () => {
             <div className="max-w-2xl">
               <span className="text-blue-600 font-bold text-xs uppercase tracking-[0.2em] mb-4 block">Fique por dentro</span>
               <h2 className="text-4xl font-bold text-gray-900 tracking-tight">Últimas Notícias</h2>
-              <p className="text-gray-500 mt-4 text-lg">Acompanhe as novidades da Exec Engenharia e as tendências do setor da construção civil.</p>
+              <p className="text-gray-500 mt-4 text-lg">Acompanhe as novidades, tendências e conquistas da Exec Engenharia.</p>
             </div>
             <Link to="/noticias" className="text-blue-600 font-bold flex items-center gap-2 hover:underline">
               Ver todas as notícias <ArrowRight size={18} />
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {noticias.slice(0, 2).map((noticia) => (
-              <NoticiaCard key={noticia.id} noticia={noticia} />
+              <Link key={noticia.id} to={`/noticias/${noticia.id}`} className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col sm:flex-row">
+                <div className="sm:w-2/5 h-48 sm:h-auto relative overflow-hidden">
+                  <img 
+                    src={noticia.imagem_capa} 
+                    alt={noticia.titulo}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    referrerPolicy="no-referrer"
+                  />
+                </div>
+                <div className="p-6 sm:w-3/5 flex flex-col justify-center">
+                  <div className="text-sm text-blue-600 font-bold mb-2">{noticia.data}</div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors line-clamp-2">{noticia.titulo}</h3>
+                  <p className="text-gray-600 line-clamp-2">{noticia.resumo}</p>
+                </div>
+              </Link>
             ))}
           </div>
         </div>
