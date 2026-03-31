@@ -1,0 +1,7 @@
+{
+  "name": "Exec Engenharia e Construções",
+  "description": "Site institucional da Exec Engenharia e Construções Ltda. Especialistas em obras residenciais, comerciais e industriais.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
