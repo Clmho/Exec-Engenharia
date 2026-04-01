@@ -2,17 +2,26 @@ import React, { useState, useEffect } from 'react';
 import { PageLayout } from '../components/PageLayout';
 import { ObraCard } from '../components/ObraCard';
 import { Obra } from '../data/mock';
-import { api } from '../services/api';
 import { motion } from 'motion/react';
-import { Search, Filter } from 'lucide-react';
+import { Search, Filter, Loader2 } from 'lucide-react';
 
 export const Obras = () => {
-  const [obras, setObras] = useState<Obra[]>([]);
   const [filter, setFilter] = useState('Todas');
+  const [obras, setObras] = useState<Obra[]>([]);
+  const [loading, setLoading] = useState(true);
   const categories = ['Todas', 'Residencial', 'Comercial', 'Industrial'];
 
   useEffect(() => {
-    api.getObras().then(setObras).catch(console.error);
+    fetch('/api/obras')
+      .then(res => res.json())
+      .then(data => {
+        setObras(data);
+        setLoading(false);
+      })
+      .catch(err => {
+        console.error('Failed to fetch obras:', err);
+        setLoading(false);
+      });
   }, []);
 
   const filteredObras = filter === 'Todas' 
@@ -65,7 +74,11 @@ export const Obras = () => {
 
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {filteredObras.length > 0 ? (
+          {loading ? (
+            <div className="flex justify-center items-center py-20">
+              <Loader2 className="w-8 h-8 animate-spin text-blue-600" />
+            </div>
+          ) : filteredObras.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
               {filteredObras.map((obra) => (
                 <ObraCard key={obra.id} obra={obra} />

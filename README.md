@@ -1,17 +1,20 @@
-# Projeto Skabe - Versão HTML Autônoma
+<div align="center">
+<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+</div>
 
-Este projeto foi convertido para funcionar de forma **totalmente autônoma** diretamente no seu navegador, sem a necessidade de instalar o Node.js, rodar servidores ou processos de build. Todo o CSS, JavaScript e imagens necessárias foram embutidos em um único arquivo HTML.
+# Run and deploy your AI Studio app
 
-## 🚀 Como Visualizar o Site
+This contains everything you need to run your app locally.
 
-1. Após baixar e extrair o arquivo ZIP, procure pelo arquivo chamado **`site-pronto.html`** na pasta principal.
-2. Dê um **duplo clique** neste arquivo para abri-lo no seu navegador (Chrome, Firefox, Safari, Edge, etc.).
-3. O site funcionará perfeitamente, incluindo todas as páginas, navegação e animações.
+View your app in AI Studio: https://ai.studio/apps/2c40733a-15b2-4a78-aedc-71fe18179977
 
-## ⚠️ Notas Importantes
+## Run Locally
 
-*   **Navegação**: A navegação entre as páginas (Home, Empresa, Obras, etc.) funciona perfeitamente dentro deste único arquivo HTML. Você notará que a URL no navegador terá um `#` (ex: `site-pronto.html#/obras`). Isso é normal e esperado para que o site funcione sem um servidor.
-*   **Hospedagem**: Se você for colocar o site na internet (como em um cPanel ou qualquer hospedagem simples), basta fazer o upload do arquivo **`site-pronto.html`** (você pode renomeá-lo para `index.html` no seu servidor) e ele funcionará sem precisar de nenhuma configuração especial.
-*   **Dados**: Os dados das obras, notícias e clientes foram embutidos diretamente no código, removendo a dependência de um banco de dados externo para que o site funcione offline.
-*   **Edição**: Como todo o código (React, Tailwind, Framer Motion) foi compilado e embutido neste único arquivo para garantir que o layout fique *exatamente* como no preview, o código fonte do `site-pronto.html` é minificado (compactado). Se você precisar fazer alterações no conteúdo ou layout no futuro, deverá editar os arquivos na pasta `src/` e gerar um novo build.
+**Prerequisites:**  Node.js
 
+
+1. Install dependencies:
+   `npm install`
+2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
+3. Run the app:
+   `npm run dev`

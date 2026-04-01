@@ -1,21 +1,31 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, CheckCircle2, Trophy, Users, Building } from 'lucide-react';
+import { ArrowRight, CheckCircle2, Trophy, Users, Building, Loader2 } from 'lucide-react';
 import { PageLayout } from '../components/PageLayout';
 import { ObraCard } from '../components/ObraCard';
-import { Obra, Cliente, Noticia } from '../data/mock';
-import { api } from '../services/api';
+import { NoticiaCard } from '../components/NoticiaCard';
+import { Obra, Noticia } from '../data/mock';
 import { motion } from 'motion/react';
 
 export const Home = () => {
   const [obras, setObras] = useState<Obra[]>([]);
-  const [clientes, setClientes] = useState<Cliente[]>([]);
   const [noticias, setNoticias] = useState<Noticia[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    api.getObras().then(setObras).catch(console.error);
-    api.getClientes().then(setClientes).catch(console.error);
-    api.getNoticias().then(setNoticias).catch(console.error);
+    Promise.all([
+      fetch('/api/obras').then(res => res.json()),
+      fetch('/api/noticias').then(res => res.json())
+    ])
+    .then(([obrasData, noticiasData]) => {
+      setObras(obrasData);
+      setNoticias(noticiasData);
+      setLoading(false);
+    })
+    .catch(err => {
+      console.error('Failed to fetch data:', err);
+      setLoading(false);
+    });
   }, []);
 
   return (
@@ -110,11 +120,17 @@ export const Home = () => {
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {obras.slice(0, 3).map((obra) => (
-              <ObraCard key={obra.id} obra={obra} />
-            ))}
-          </div>
+          {loading ? (
+            <div className="flex justify-center items-center py-10">
+              <Loader2 className="w-8 h-8 animate-spin text-blue-600" />
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {obras.slice(0, 3).map((obra) => (
+                <ObraCard key={obra.id} obra={obra} />
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
@@ -132,25 +148,17 @@ export const Home = () => {
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {noticias.slice(0, 2).map((noticia) => (
-              <Link key={noticia.id} to={`/noticias/${noticia.id}`} className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col sm:flex-row">
-                <div className="sm:w-2/5 h-48 sm:h-auto relative overflow-hidden">
-                  <img 
-                    src={noticia.imagem_capa} 
-                    alt={noticia.titulo}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    referrerPolicy="no-referrer"
-                  />
-                </div>
-                <div className="p-6 sm:w-3/5 flex flex-col justify-center">
-                  <div className="text-sm text-blue-600 font-bold mb-2">{noticia.data}</div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors line-clamp-2">{noticia.titulo}</h3>
-                  <p className="text-gray-600 line-clamp-2">{noticia.resumo}</p>
-                </div>
-              </Link>
-            ))}
-          </div>
+          {loading ? (
+            <div className="flex justify-center items-center py-10">
+              <Loader2 className="w-8 h-8 animate-spin text-blue-600" />
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              {noticias.slice(0, 4).map((noticia) => (
+                <NoticiaCard key={noticia.id} noticia={noticia} />
+              ))}
+            </div>
+          )}
         </div>
       </section>
 

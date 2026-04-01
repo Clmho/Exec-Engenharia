@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { PageLayout } from '../components/PageLayout';
 import { Noticia } from '../data/mock';
-import { api } from '../services/api';
 import { motion } from 'motion/react';
-import { ArrowLeft, Calendar } from 'lucide-react';
+import { ArrowLeft, Calendar, Loader2 } from 'lucide-react';
 
 export const NoticiaDetalhe = () => {
   const { id } = useParams();
@@ -13,21 +12,26 @@ export const NoticiaDetalhe = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    api.getNoticias().then(noticias => {
-      const found = noticias.find(n => n.id === id);
-      setNoticia(found || null);
-      setLoading(false);
-    }).catch(err => {
-      console.error(err);
-      setLoading(false);
-    });
+    fetch(`/api/noticias/${id}`)
+      .then(res => {
+        if (!res.ok) throw new Error('Not found');
+        return res.json();
+      })
+      .then(data => {
+        setNoticia(data);
+        setLoading(false);
+      })
+      .catch(err => {
+        console.error('Failed to fetch noticia:', err);
+        setLoading(false);
+      });
   }, [id]);
 
   if (loading) {
     return (
       <PageLayout title="Carregando...">
-        <div className="py-32 text-center">
-          <h1 className="text-3xl font-bold mb-6">Carregando...</h1>
+        <div className="flex justify-center items-center py-32">
+          <Loader2 className="w-8 h-8 animate-spin text-blue-600" />
         </div>
       </PageLayout>
     );
