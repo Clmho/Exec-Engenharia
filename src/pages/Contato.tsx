@@ -126,8 +126,8 @@ export const Contato = () => {
                   </div>
                   <div>
                     <h3 className="text-lg font-bold text-gray-900 mb-1">Endereço</h3>
-                    <p className="text-gray-500">Rua das Flores, 126</p>
-                    <p className="text-gray-500">Novo Hamburgo - RS</p>
+                    <p className="text-gray-500">R. Dr. Emílio Ribas, 1058 - Cambuí</p>
+                    <p className="text-gray-500">Campinas - SP, 13025-142</p>
                   </div>
                 </div>
               </div>
@@ -169,10 +169,9 @@ export const Contato = () => {
                         <label className="text-sm font-bold text-gray-700">Nome Completo</label>
                         <input
                           type="text"
-                          value={formData.nome}
                           onChange={(e) => setFormData({ ...formData, nome: e.target.value })}
                           className={`w-full px-4 py-3 rounded-xl border outline-none transition-all ${errors.nome ? 'border-red-500 focus:ring-red-100' : 'border-gray-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-50 focus:ring-opacity-50'}`}
-                          placeholder="Ex: João Silva"
+                          placeholder=""
                         />
                         {errors.nome && <p className="text-red-500 text-xs font-medium flex items-center gap-1"><AlertCircle size={12} /> {errors.nome}</p>}
                       </div>
@@ -180,10 +179,9 @@ export const Contato = () => {
                         <label className="text-sm font-bold text-gray-700">E-mail</label>
                         <input
                           type="email"
-                          value={formData.email}
                           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                           className={`w-full px-4 py-3 rounded-xl border outline-none transition-all ${errors.email ? 'border-red-500 focus:ring-red-100' : 'border-gray-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-50 focus:ring-opacity-50'}`}
-                          placeholder="joao@exemplo.com"
+                          placeholder=""
                         />
                         {errors.email && <p className="text-red-500 text-xs font-medium flex items-center gap-1"><AlertCircle size={12} /> {errors.email}</p>}
                       </div>
@@ -193,10 +191,9 @@ export const Contato = () => {
                       <label className="text-sm font-bold text-gray-700">Telefone / WhatsApp</label>
                       <input
                         type="text"
-                        value={formData.telefone}
                         onChange={(e) => setFormData({ ...formData, telefone: e.target.value })}
                         className={`w-full px-4 py-3 rounded-xl border outline-none transition-all ${errors.telefone ? 'border-red-500 focus:ring-red-100' : 'border-gray-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-50 focus:ring-opacity-50'}`}
-                        placeholder="(11) 99999-9999"
+                        placeholder=""
                       />
                       {errors.telefone && <p className="text-red-500 text-xs font-medium flex items-center gap-1"><AlertCircle size={12} /> {errors.telefone}</p>}
                     </div>
@@ -205,10 +202,9 @@ export const Contato = () => {
                       <label className="text-sm font-bold text-gray-700">Mensagem</label>
                       <textarea
                         rows={5}
-                        value={formData.mensagem}
                         onChange={(e) => setFormData({ ...formData, mensagem: e.target.value })}
                         className={`w-full px-4 py-3 rounded-xl border outline-none transition-all resize-none ${errors.mensagem ? 'border-red-500 focus:ring-red-100' : 'border-gray-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-50 focus:ring-opacity-50'}`}
-                        placeholder="Como podemos ajudar?"
+                        placeholder=""
                       />
                       {errors.mensagem && <p className="text-red-500 text-xs font-medium flex items-center gap-1"><AlertCircle size={12} /> {errors.mensagem}</p>}
                     </div>
@@ -239,7 +235,7 @@ export const Contato = () => {
       {/* Google Map */}
       <section className="h-[450px] w-full bg-gray-100 relative overflow-hidden">
         <iframe 
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3469.04359871638!2d-51.1289183!3d-29.679683!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x951943bb26866bd5%3A0x3a62f60d139cb749!2sR.+das+Fl%C3%B4res%2C+126+-+Centro%2C+Novo+Hamburgo+-+RS%2C+93510-090!5e0!3m2!1spt-BR!2sbr!4v1711909312345!5m2!1spt-BR!2sbr" 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3675.35624127995!2d-47.0543236!3d-22.8993441!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c8cf4984f9377d%3A0x2863925769246473!2sExec%20Engenharia%20e%20Constru%C3%A7%C3%B5es%20Ltda!5e0!3m2!1spt-BR!2sbr!4v1711909312345!5m2!1spt-BR!2sbr" 
           width="100%" 
           height="100%" 
           style={{ border: 0 }} 
