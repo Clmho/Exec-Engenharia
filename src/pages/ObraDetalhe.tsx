@@ -2,9 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { PageLayout } from '../components/PageLayout';
 import { Obra } from '../data/mock';
-import { api } from '../services/api';
 import { motion, AnimatePresence } from 'motion/react';
-import { ArrowLeft, MapPin, Calendar, Tag, ChevronLeft, ChevronRight, X, Maximize2 } from 'lucide-react';
+import { ArrowLeft, MapPin, Calendar, Tag, ChevronLeft, ChevronRight, X, Maximize2, Loader2 } from 'lucide-react';
 
 export const ObraDetalhe = () => {
   const { id } = useParams();
@@ -14,21 +13,26 @@ export const ObraDetalhe = () => {
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
 
   useEffect(() => {
-    api.getObras().then(obras => {
-      const found = obras.find(o => o.id === id);
-      setObra(found || null);
-      setLoading(false);
-    }).catch(err => {
-      console.error(err);
-      setLoading(false);
-    });
+    fetch(`/api/obras/${id}`)
+      .then(res => {
+        if (!res.ok) throw new Error('Not found');
+        return res.json();
+      })
+      .then(data => {
+        setObra(data);
+        setLoading(false);
+      })
+      .catch(err => {
+        console.error('Failed to fetch obra:', err);
+        setLoading(false);
+      });
   }, [id]);
 
   if (loading) {
     return (
       <PageLayout title="Carregando...">
-        <div className="py-32 text-center">
-          <h1 className="text-3xl font-bold mb-6">Carregando...</h1>
+        <div className="flex justify-center items-center py-32">
+          <Loader2 className="w-8 h-8 animate-spin text-blue-600" />
         </div>
       </PageLayout>
     );

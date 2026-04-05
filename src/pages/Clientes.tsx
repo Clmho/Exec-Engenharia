@@ -16,12 +16,29 @@ export const Clientes = () => {
       title="Nossos Clientes"
       description="Empresas e parceiros que confiam na Exec Engenharia para realizar seus projetos."
     >
-      <section className="py-20 bg-gray-50 border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl font-bold text-gray-900 mb-6 tracking-tight">Parceiros de Sucesso</h1>
-          <p className="text-gray-500 max-w-2xl mx-auto text-lg">
-            Ao longo de nossa trajetória, construímos relacionamentos sólidos com grandes empresas de diversos setores.
-          </p>
+      {/* Header */}
+      <section className="relative py-24 text-white overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <img
+            src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?q=80&w=2000&auto=format&fit=crop"
+            alt="Clientes Background"
+            referrerPolicy="no-referrer"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-blue-900/80" />
+        </div>
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="max-w-3xl"
+          >
+            <span className="text-blue-400 font-bold text-xs uppercase tracking-[0.2em] mb-4 block">Nossos Parceiros</span>
+            <h1 className="text-4xl font-bold mb-6 tracking-tight">Empresas que confiam em nossa excelência.</h1>
+            <p className="text-xl text-blue-100 leading-relaxed">
+              Ao longo de nossa trajetória, construímos relacionamentos sólidos com grandes empresas de diversos setores, entregando resultados que superam expectativas.
+            </p>
+          </motion.div>
         </div>
       </section>
 

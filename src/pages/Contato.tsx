@@ -79,17 +79,38 @@ export const Contato = () => {
       title="Contato"
       description="Entre em contato com a Exec Engenharia para orçamentos, dúvidas ou parcerias."
     >
-      <section className="py-20 bg-gray-50">
+      {/* Header */}
+      <section className="relative py-24 text-white overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <img
+            src="https://images.unsplash.com/photo-1423666639041-f56000c27a9a?q=80&w=2000&auto=format&fit=crop"
+            alt="Contato Background"
+            referrerPolicy="no-referrer"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gray-900/80" />
+        </div>
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="max-w-3xl"
+          >
+            <span className="text-blue-400 font-bold text-xs uppercase tracking-[0.2em] mb-4 block">Fale Conosco</span>
+            <h1 className="text-4xl font-bold mb-6 tracking-tight">Estamos prontos para ouvir você.</h1>
+            <p className="text-xl text-gray-400 leading-relaxed">
+              Seja para um novo projeto, uma dúvida técnica ou uma proposta de parceria, nossa equipe está à disposição para atendê-lo com agilidade e profissionalismo.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      <section className="py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             {/* Contact Info */}
             <div>
-              <span className="text-blue-600 font-bold text-xs uppercase tracking-[0.2em] mb-4 block">Fale Conosco</span>
-              <h1 className="text-4xl font-bold text-gray-900 mb-8 tracking-tight">Estamos prontos para ouvir você.</h1>
-              <p className="text-gray-500 text-lg mb-12 leading-relaxed">
-                Seja para um novo projeto, uma dúvida técnica ou uma proposta de parceria, nossa equipe está à disposição para atendê-lo com agilidade e profissionalismo.
-              </p>
-
+              <h2 className="text-3xl font-bold text-gray-900 mb-8 tracking-tight">Canais de Atendimento</h2>
               <div className="space-y-8">
                 <div className="flex items-start gap-6">
                   <div className="w-12 h-12 bg-blue-600 text-white rounded-2xl flex items-center justify-center shrink-0 shadow-lg shadow-blue-600/20">
