@@ -53,7 +53,7 @@ export default function Header() {
           <img 
             src="https://execengenharia.com.br/logo-exec-engenharia.png" 
             alt="Exec Engenharia" 
-            className={`h-[62px] w-auto transition-all ${isHome && !isScrolled ? 'brightness-0 invert' : ''}`}
+            className="h-[62px] w-auto transition-all"
             referrerPolicy="no-referrer"
           />
         </Link>

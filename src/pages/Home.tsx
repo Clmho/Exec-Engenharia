@@ -11,8 +11,8 @@ export default function Home() {
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img
-            src="https://picsum.photos/seed/construction-hero/1920/1080"
-            alt="Construção Urbana"
+            src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=2070"
+            alt="Prédios Modernos Exec Engenharia"
             className="w-full h-full object-cover"
             referrerPolicy="no-referrer"
           />
@@ -33,19 +33,19 @@ export default function Home() {
               Construímos com <span className="text-hero-blue">Precisão</span> e Inovação.
             </h1>
             <p className="text-lg md:text-xl text-white/70 mb-10 max-w-2xl">
-              Excelência em engenharia e construção civil, entregando projetos que transformam visões em realidade com segurança e tecnologia.
+              Especialistas em transformar grandes projetos em realidades sólidas. Qualidade técnica e compromisso com o prazo.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
                 to="/obras"
-                className="px-8 py-4 bg-primary-medium text-white font-bold rounded hover:bg-primary-dark transition-colors flex items-center justify-center group"
+                className="px-8 py-4 bg-primary-medium text-white font-bold rounded-full hover:bg-primary-dark transition-colors flex items-center justify-center group"
               >
                 Ver Portfólio
                 <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link
                 to="/contato"
-                className="px-8 py-4 bg-transparent border-2 border-white/30 text-white font-bold rounded hover:bg-white/10 transition-colors flex items-center justify-center"
+                className="px-8 py-4 bg-black/40 backdrop-blur-sm border border-white/20 text-white font-bold rounded-full hover:bg-black/60 transition-colors flex items-center justify-center"
               >
                 Fale Conosco
               </Link>

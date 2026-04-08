@@ -14,8 +14,8 @@ export default function Clientes() {
       <section className="relative py-24 flex items-center">
         <div className="absolute inset-0 z-0">
           <img
-            src="https://picsum.photos/seed/clients/1920/1080"
-            alt="Clientes Exec Engenharia"
+            src="https://picsum.photos/seed/industrial-building/1920/1080"
+            alt="Engenharia Industrial"
             className="w-full h-full object-cover"
             referrerPolicy="no-referrer"
           />

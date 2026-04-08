@@ -20,8 +20,8 @@ export default function Obras() {
             <section className="relative py-24 flex items-center">
               <div className="absolute inset-0 z-0">
                 <img
-                  src="https://picsum.photos/seed/portfolio/1920/1080"
-                  alt="Portfólio Exec Engenharia"
+                  src="https://picsum.photos/seed/architecture-engineering/1920/1080"
+                  alt="Arquitetura e Engenharia"
                   className="w-full h-full object-cover"
                   referrerPolicy="no-referrer"
                 />

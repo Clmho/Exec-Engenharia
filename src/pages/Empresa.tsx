@@ -8,8 +8,8 @@ export default function Empresa() {
       <section className="relative py-24 flex items-center">
         <div className="absolute inset-0 z-0">
           <img
-            src="https://picsum.photos/seed/office/1920/1080"
-            alt="Escritório Exec Engenharia"
+            src="https://picsum.photos/seed/construction-site/1920/1080"
+            alt="Engenharia e Construção"
             className="w-full h-full object-cover"
             referrerPolicy="no-referrer"
           />

@@ -20,8 +20,8 @@ export default function Noticias() {
             <section className="relative py-24 flex items-center">
               <div className="absolute inset-0 z-0">
                 <img
-                  src="https://picsum.photos/seed/news-hero/1920/1080"
-                  alt="Notícias Exec Engenharia"
+                  src="https://picsum.photos/seed/engineering-work/1920/1080"
+                  alt="Obras de Engenharia"
                   className="w-full h-full object-cover"
                   referrerPolicy="no-referrer"
                 />
